@@ -1,0 +1,67 @@
+.container{
+    display: inline-flex;
+    flex-flow: column;
+}
+.container .panel{
+    width: 50%;
+    display: table-cell;
+    padding: 10px;
+    background-color: #cccccc;
+}
+.container .panel:first-child{
+    border-right: 1px solid gray;
+}
+.b{
+    position: relative;
+    top: 500px;
+}
+
+form{
+    margin: 0;
+    display: inline-flex;
+    flex-flow: column;
+    border: #008888 1px solid;
+    padding: 5px;
+}
+.form-group{
+    padding: 10px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    flex-flow: column nowrap;
+}
+.form-group-unit{
+    display: inline-flex;
+    flex-flow: row;
+}
+.form-group-unit button{
+    margin-left: 5px;
+}
+.form-group>button{
+    margin-top: 10px;
+}
+label{
+    margin-right: 10px;
+}
+.ng-invalid.ng-touched{
+    border-color: red;
+}
+input[type="submit"]{
+    margin-left: 10px;
+    width: 100px;
+}
+.error{
+    color: red;
+}
+
+.preview{
+    margin-top: 10px;
+    display: inline-flex;
+    flex-flow: column ;
+    border: #008888 1px solid;
+    padding: 5px;
+}
+.unit{
+    display: inline-flex;
+    flex-flow: column ;
+}
+

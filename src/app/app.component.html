@@ -1,0 +1,63 @@
+<div class="container">
+    <form [formGroup]="myform" (ngSubmit)="submit(myform)">
+        <div class="form-group">
+            <label for="nameinp">Name</label>
+            <input type="text" id="nameinp" name="name" formControlName="name">
+            <div class="error" *ngIf="myform.controls.name.invalid && myform.controls.name.touched">Field name is required</div>
+        </div>
+        <div class="form-group">
+            <label for="nameinp">Description</label>
+            <input type="text" id="description" name="description" formControlName="description">
+            <div class="error" *ngIf="myform.controls.description.invalid && myform.controls.description.touched">Field description is required</div>
+        </div>
+        <div class="form-group" formArrayName="categories">
+            <p>Categories</p>
+            <div class="form-froup-unit" *ngFor="let category of myform.controls.categories.controls; let i = index">
+                <input type="text" id="category" name="category" formControlName="{{i}}">
+                <button (click)="delCategory(i,$event)">-</button>
+            </div>
+            <div class="error" *ngIf="myform.controls.categories.invalid && myform.controls.categories.touched">Field category is required</div>
+            <button (click)="addCategory($event)">Add category</button>
+        </div>
+
+        <div class="form-group" formArrayName="phones">
+            <p>Phones</p>
+            <div class="form-froup-unit" *ngFor="let phone of myform.controls.phones.controls; let i = index">
+                <input type="text" id="phone" name="phone" formControlName="{{i}}">
+                 <button (click)="delPhone(i,$event)">-</button><div class="error" *ngIf="phone.errors && phone.errors.pattern">Not a phone</div>
+
+        </div>
+            <div class="error" *ngIf="myform.controls.phones.invalid && myform.controls.phones.touched">Field phone is required</div>
+
+            <button (click)="addPhone($event)">Add phone</button>
+        </div>
+        <div *ngIf="myform.valid">
+            <input type="submit">
+        </div>
+
+    </form>
+
+
+
+    <div class="preview" *ngIf="myform.valid">
+        <h3>Preview</h3>
+        <div class="preview unit">
+            <p>Name:</p>
+            {{order.name}}</div>
+        <div class="preview unit">
+            <p>Desc:</p>
+            {{order.description}}</div>
+        <div class="preview unit">
+            <p>Categories:</p>
+            <div class="category" *ngFor="let category of order.categories">
+                {{category}}
+            </div>
+        </div>
+        <div class="preview unit">
+            <p>Phones:</p>
+            <div class="phone" *ngFor="let phone of order.phones">
+                <p>{{phone}}</p>
+            </div>
+        </div>
+    </div>
+</div>
